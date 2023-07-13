@@ -1,0 +1,6 @@
+{{ if .IsNamedParams }}
+  {{ $products := index $.Site.Data.slide $.Params.data }}
+  {{ range $products }}
+    {{ partial "components/slideshow" . }}
+  {{ end }}
+{{- end -}}
