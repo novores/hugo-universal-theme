@@ -1,0 +1,105 @@
+<div class="w3-container w3-animate-top w3-round-xxlarge w3-black">
+  {{- with (.Get "dir") -}} {{- $files := readDir (print "/static/" .) }} {{-
+  range $files -}} {{- $absoluteUrl := print ($.Get "dir") "/" .Name | absURL }}
+  <img style="height: 350px" class="mySlides" src="{{ $absoluteUrl }}" />
+  {{- end }} {{- end }}
+
+  <div class="w3-bar">
+    <button
+      class="w3-center w3-bar-item w3-round w3-xxxlarge w3-button w3-display-left"
+      onclick="plusDivs(-1)"
+    >
+      &#10094;
+    </button>
+    <button
+      class="w3-center w3-bar-item w3-round w3-xxxlarge w3-button w3-display-right"
+      onclick="plusDivs(+1)"
+    >
+      &#10095;
+    </button>
+  </div>
+</div>
+
+<br />
+<div class="w3-container w3-animate-top">
+  {{ if .Get "disc" }}
+  <h3>Rp.{{ .Get "disc" }} <del style="font-size:17px">Rp.{{ .Get "price" }}</del></h3>
+  {{ else }}
+  <h3>Rp.{{ .Get "price" }}</h3>
+  {{ end }}
+  
+</div>
+<div class="w3-row">
+  <a href="javascript:void(0)" onclick="openCity(event, 'one');">
+    <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">
+      Deskripsi
+    </div>
+  </a>
+  <a href="javascript:void(0)" onclick="openCity(event, 'two');">
+    <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">
+      Spesifikasi
+    </div>
+  </a>
+  <a href="javascript:void(0)" onclick="openCity(event, 'three');">
+    <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">
+      Cara Pemesanan
+    </div>
+  </a>
+</div>
+{{ .Inner }}
+<a href="link_catalog_whatsapp" class="btn-whatsapp">Beli via WhatsApp</a>
+<style>
+  .btn-whatsapp {
+    display: inline-block;
+    background-color: green;
+    font-size: 12px;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+</style>
+
+<script>
+  function openCity(evt, cityName) {
+    var i, x, tablinks
+    x = document.getElementsByClassName('city')
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = 'none'
+    }
+    tablinks = document.getElementsByClassName('tablink')
+    for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(
+        ' w3-border-red',
+        ''
+      )
+    }
+    document.getElementById(cityName).style.display = 'block'
+    evt.currentTarget.firstElementChild.className += ' w3-border-red'
+  }
+</script>
+
+<script>
+  var slideIndex = 1
+  showDivs(slideIndex)
+
+  function plusDivs(n) {
+    showDivs((slideIndex += n))
+  }
+
+  function showDivs(n) {
+    var i
+    var x = document.getElementsByClassName('mySlides')
+    if (n > x.length) {
+      slideIndex = 1
+    }
+    if (n < 1) {
+      slideIndex = x.length
+    }
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = 'none'
+    }
+    x[slideIndex - 1].style.display = 'block'
+  }
+</script>

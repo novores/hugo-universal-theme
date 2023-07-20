@@ -3,7 +3,11 @@
   <img src="{{ .img }}" alt="Gambar Produk">
   </div>
   <h3>{{ .name }}</h3>
+  {{ if .disc }}
+  <div class="harga"> {{ .disc }}</br><del style="font-size:11px">Rp.{{ .price }}</del></div>
+  {{ else }}
   <p class="harga">Rp.{{ .price }}</p>
+  {{ end }}
   <a href="link_catalog_whatsapp" class="btn-whatsapp">Beli via WhatsApp</a>
 </div>
 
@@ -15,7 +19,7 @@
 .product {
   display: inline-block;
   background-color:#f1f1f1;
-  width: 300px;
+  width: 200px;
   height: auto;
   margin: 10px;
   text-align: left;
@@ -30,23 +34,25 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  height: 350px;
+  height: 200px;
   width: auto;
 }
 
 .product h3 {
-  font-size: 18px;
+  font-size: 15px;
   margin-bottom: 10px;
 }
 
 .product .harga {
-  font-size: 16px;
-  color: #888;
+  font-size: 15px;
+  color: #282828;
+  text-weight: bold;
 }
 
 .product .btn-whatsapp {
   display: inline-block;
   background-color: green;
+  font-size: 12px;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
