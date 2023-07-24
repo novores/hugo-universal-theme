@@ -23,12 +23,15 @@
 <br />
 <div class="w3-container w3-animate-top">
   {{ if .Get "disc" }}
-  <h3>Rp.{{ .Get "disc" }} <del style="font-size:17px">Rp.{{ .Get "price" }}</del></h3>
+  <h3>
+    Rp.{{ .Get "disc" }}
+    <del style="font-size: 17px">Rp.{{ .Get "price" }}</del>
+  </h3>
   {{ else }}
   <h3>Rp.{{ .Get "price" }}</h3>
   {{ end }}
-  
 </div>
+
 <div class="w3-row">
   <a href="javascript:void(0)" onclick="openCity(event, 'one');">
     <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">

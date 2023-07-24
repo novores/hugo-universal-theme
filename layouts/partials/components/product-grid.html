@@ -1,6 +1,6 @@
 <div class="product" onclick="location.href = '{{ .url }}'">
   <img src="{{ .img }}" alt="Gambar Produk">
-  <h3>{{ .name }}</h3>
+  <h3><strong>{{ .name }}</strong></h3>
   {{ if .disc }}
   <div class="harga"> {{ .disc }}</br><del style="font-size:11px">Rp.{{ .price }}</del></div>
   {{ else }}
@@ -43,7 +43,7 @@
 
 .product .harga {
   font-size: 15px;
-  color: #282828;
+  color: #4d4d4d;
   text-weight: bold;
 }
 
