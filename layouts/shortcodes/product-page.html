@@ -1,108 +1,81 @@
-<div class="w3-container w3-animate-top w3-round-xxlarge w3-black">
-  {{- with (.Get "dir") -}} {{- $files := readDir (print "/static/" .) }} {{-
-  range $files -}} {{- $absoluteUrl := print ($.Get "dir") "/" .Name | absURL }}
-  <img style="height: 350px" class="mySlides" src="{{ $absoluteUrl }}" />
-  {{- end }} {{- end }}
+{{ if .IsNamedParams }} 
+<link href="{{ "css/w3.css" | relURL }}" rel="stylesheet">
+{{ $data := index .Site.Data.products $.Params.data }} {{ range $data }}
+<!-- BEGIN SLIDE IMAGE -->
+<section>
+  <div id="myCarousel" class="carousel slide" data-interval="false" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+      {{ if .img }}<li data-target="#myCarousel" data-slide-to="0" class="active"></li>{{ end }}
+      {{ if .img1 }}<li data-target="#myCarousel" data-slide-to="1"></li>{{ end }}
+      {{ if .img2 }}<li data-target="#myCarousel" data-slide-to="2"></li>{{ end }}
+  </ol>
+    <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+        <img src="{{ .img }}" style="height:400px" alt="Los Angeles">
+    </div>
+      {{ if .img1 }}
+    <div class="item">
+        <img src="{{ .img1 }}" style="height:400px"alt="Chicago">
+    </div>
+      {{ end }}
+      {{ if .img2 }}
 
-  <div class="w3-bar">
-    <button
-      class="w3-center w3-bar-item w3-round w3-xxxlarge w3-button w3-display-left"
-      onclick="plusDivs(-1)"
-    >
-      &#10094;
-    </button>
-    <button
-      class="w3-center w3-bar-item w3-round w3-xxxlarge w3-button w3-display-right"
-      onclick="plusDivs(+1)"
-    >
-      &#10095;
-    </button>
+    <div class="item">
+        <img src="{{ .img2 }}" style="height:400px" alt="New York">
+    </div>
+      {{ end }}
   </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
+</section>
+ <!-- END SLIDE IMAGE -->
 
 <br />
 <div class="w3-container w3-animate-top">
-  {{ if .Get "disc" }}
+  {{ if .disc }}
   <h3>
-    Rp.{{ .Get "disc" }}
-    <del style="font-size: 17px">Rp.{{ .Get "price" }}</del>
+    Rp.{{ .disc }}
+    <del style="font-size: 17px">Rp.{{ .price }}</del>
   </h3>
   {{ else }}
-  <h3>Rp.{{ .Get "price" }}</h3>
+  <h3>Rp. {{ .price }}</h3>
   {{ end }}
 </div>
+<br>
+<br>
 
-<div class="w3-row">
-  <a href="javascript:void(0)" onclick="openCity(event, 'one');">
-    <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">
-      Deskripsi
-    </div>
-  </a>
-  <a href="javascript:void(0)" onclick="openCity(event, 'two');">
-    <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">
-      Spesifikasi
-    </div>
-  </a>
-  <a href="javascript:void(0)" onclick="openCity(event, 'three');">
-    <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">
-      Cara Pemesanan
-    </div>
-  </a>
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#desc">Deskripsi</a></li>
+  <li><a data-toggle="tab" href="#spec">Detail</a></li>
+  <li><a data-toggle="tab" href="#order">Cara pemesanan</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="desc" class="tab-pane fade in active">
+    <h3>Deskripsi</h3>
+    <p>{{ .desc | safeHTML }}</p>
+  </div>
+  <div id="spec" class="tab-pane fade">
+    <h3>Detail</h3>
+    {{ .spec | safeHTML }}
+  </div>
+  <div id="order" class="tab-pane fade">
+    <h3>Cara Pemesanan</h3>
+    {{ .order | safeHTML }}
+  </div>
 </div>
-{{ .Inner }}
-<a href="link_catalog_whatsapp" class="btn-whatsapp">Beli via WhatsApp</a>
-<style>
-  .btn-whatsapp {
-    display: inline-block;
-    background-color: green;
-    font-size: 12px;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-  }
-</style>
-
-<script>
-  function openCity(evt, cityName) {
-    var i, x, tablinks
-    x = document.getElementsByClassName('city')
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = 'none'
-    }
-    tablinks = document.getElementsByClassName('tablink')
-    for (i = 0; i < x.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(
-        ' w3-border-red',
-        ''
-      )
-    }
-    document.getElementById(cityName).style.display = 'block'
-    evt.currentTarget.firstElementChild.className += ' w3-border-red'
-  }
-</script>
-
-<script>
-  var slideIndex = 1
-  showDivs(slideIndex)
-
-  function plusDivs(n) {
-    showDivs((slideIndex += n))
-  }
-
-  function showDivs(n) {
-    var i
-    var x = document.getElementsByClassName('mySlides')
-    if (n > x.length) {
-      slideIndex = 1
-    }
-    if (n < 1) {
-      slideIndex = x.length
-    }
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = 'none'
-    }
-    x[slideIndex - 1].style.display = 'block'
-  }
-</script>
+<br>
+<a class="btn btn-success" href="{{ .linkWA }}" role="button">Pesan Via WhatsApp</a>
+{{ end }}
+    {{ end }}
