@@ -55,19 +55,15 @@
 <br>
 <br>
 
+<!-- BEGIN TAB -->
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#desc">Deskripsi</a></li>
-  <li><a data-toggle="tab" href="#spec">Detail</a></li>
+  <li class="active"><a data-toggle="tab" href="#spec">Detail Produk</a></li>
   <li><a data-toggle="tab" href="#order">Cara pemesanan</a></li>
 </ul>
 
 <div class="tab-content">
-  <div id="desc" class="tab-pane fade in active">
-    <h3>Deskripsi</h3>
-    <p>{{ .desc | safeHTML }}</p>
-  </div>
-  <div id="spec" class="tab-pane fade">
-    <h3>Detail</h3>
+  <div id="spec" class="tab-pane fade in active">
+    <h3>Detail Produk</h3>
     {{ .spec | safeHTML }}
   </div>
   <div id="order" class="tab-pane fade">
