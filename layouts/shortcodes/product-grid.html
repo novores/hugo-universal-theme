@@ -1,6 +1,0 @@
-{{ if .IsNamedParams }}
-  {{ $products := index $.Site.Data.products $.Params.data }}
-  {{ range $index, $products }}
-    {{ partial "components/product-grid" . }}
-  {{ end }}
-{{- end -}}

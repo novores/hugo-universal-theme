@@ -1,0 +1,24 @@
+{{ if .Site.Params.widgets.labels }}
+{{ if isset .Site.Taxonomies "labels" }}
+{{ if not (eq (len .Site.Taxonomies.labels) 0) }}
+<div class="panel sidebar-menu">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Labels - list</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            {{ $current := . }}
+            {{ range $name, $items := .Site.Taxonomies.labels }}
+            <li {{ if eq $current.RelPermalink (printf "%s/%s/" ("labels" | relLangURL) ($name | urlize | lower)) }}class="active"{{ end }}>
+                <a href="{{ "labels/" | relLangURL }}{{ $name | urlize | lower }}"><i class="fas fa-tags"></i> {{ $name }}</a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+
+</div>
+{{ end }}
+{{ end }}
+{{ end }}

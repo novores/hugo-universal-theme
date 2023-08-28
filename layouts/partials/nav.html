@@ -139,19 +139,27 @@
                   </li>
                   {{ end }}
                   {{ end }}
+
+            <li class="navbar-form">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-search"></i>
+                    </button>
+                    <div class="navbar-light dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <form action="/search" class="dropdown-item navbar-form" role="search" method="GET">
+                          <div class="input-group">
+                              <input class="form-control form-control-sm" type="search" name="q" id="search-query" aria-label="Search" placeholder="Cari Artikel/produk">
+                                <span class="input-group-btn">
+                                  <button type="submit" class="btn btn-template-main"><i class="fas fa-search"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+            </li>
+          
                 </ul>
             </div>
             <!--/.nav-collapse -->
 
-            <div class="collapse clearfix" id="search">
-                <form class="navbar-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-                    <button type="submit" class="btn btn-template-main"><i class="fas fa-search"></i></button>
-                </span>
-                    </div>
-                </form>
             </div>
             <!--/.nav-collapse -->
         </div>
