@@ -19,25 +19,23 @@
         <div id="content">
           
             <div class="container">
-                    <!-- *** LEFT COLUMN *** -->
-                <div class="row">
-
+              
+              <div class="row">
                     <div class="col-md-9" style="text-align:center">
                         {{ .Content }}
                           {{ range .Pages }}
-                                <div class="product" onclick="location.href = '{{ .Permalink }}'">
-                                  <img src="https://cdn.jsdelivr.net/gh/novores/ldtqn-jabar/static/img/products/{{ .Params.img }}" alt="Gambar Produk">
-                                  <h3><strong>{{ .Title }}</strong></h3>
-                                  {{ if .Params.disc }}
-                                  <div class="harga">Rp.{{ .Params.disc }}</br><del style="font-size:11px">Rp.{{ .Params.price }}</del></div>
-                                  {{ else }}
-                                  <p class="harga">Rp.{{ .Params.price }}</p>
-                                  {{ end }}
-                                  <a href="{{ .Params.linkWA }}" class="btn-whatsapp">Beli via WhatsApp</a>
-                                </div>
+                            <div class="product" onclick="location.href = '{{ .Permalink }}'">
+                              <img src="https://cdn.jsdelivr.net/gh/novores/ldtqn-jabar/static/img/products/{{ .Params.img }}" alt="Gambar Produk">
+                              <h3><strong>{{ .Title }}</strong></h3>
+                              {{ if .Params.disc }}
+                              <div class="harga">Rp.{{ .Params.disc }}</br><del style="font-size:11px">Rp.{{ .Params.price }}</del></div>
+                              {{ else }}
+                              <p class="harga">Rp.{{ .Params.price }}</p>
+                              {{ end }}
+                              <a href="{{ .Params.linkWA }}" class="btn-whatsapp">Beli via WhatsApp</a>
+                            </div>
                           {{ end }}
                       </div>
-                      
                     <div class="col-md-3">
 
                         <!-- *** MENUS AND WIDGETS *** -->
@@ -46,8 +44,8 @@
 
                         <!-- *** MENUS AND FILTERS END *** -->
 
-                    </div>
-                <!-- /.row -->
+                  </div>
+                  <!-- /.row -->
             </div>
             <!-- /.container -->
         </div>

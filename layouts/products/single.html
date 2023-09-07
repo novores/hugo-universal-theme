@@ -14,7 +14,6 @@
 
         {{ partial "nav.html" . }}
 
-        {{ partial "breadcrumbs.html" . }}
 
         <div id="content">
             <div class="container">
@@ -76,16 +75,15 @@
                             </div>
                             </section>
                              <!-- END SLIDE IMAGE -->
-
-                            <br />
+                          <section> <h1>{{ .Title }}</h1></section>
                             <div class="w3-container w3-animate-top">
                               {{ if .Params.disc }}
-                              <h3>
-                                Rp.{{ .Params.disc }}
-                                <del style="font-size: 17px">Rp.{{ .Params.price }}</del>
-                              </h3>
+                              <span style="border:solid 1px #B8E891;padding:10px;border-radius:10px">
+                                <span style="font-size: 20px;font-weight:400">Rp.{{ .Params.disc }}</span>
+                                <del style="font-size: 17px;font-weight:300">Rp.{{ .Params.price }}</del>
+                              </span>
                               {{ else }}
-                              <h3>Rp. {{ .Params.price }}</h3>
+                              <p style="font-size: 20px;">Rp. {{ .Params.price }}</p>
                               {{ end }}
                             </div>
                             <br>

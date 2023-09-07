@@ -77,7 +77,6 @@ button {
   color: var(--primary-accent);
 }
 .text-uppercase {
-  text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 @media (max-width: 991px) {
@@ -315,9 +314,6 @@ ul.list-style-none {
   border: none;
 }
 .navbar ul.nav > li > a {
-  text-transform: uppercase;
-  text-decoration: underline;
-  font-weight: bold;
   letter-spacing: 0.08em;
   border-top: solid 5px transparent;
 }
@@ -361,7 +357,6 @@ ul.list-style-none {
 .navbar ul.dropdown-menu li {
   list-style-type: none;
   border-bottom: solid 1px #eeeeee;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 4px 0;
 }
@@ -1741,14 +1736,16 @@ fieldset[disabled] .btn-template-primary.active {
   border: none;
 }
 #heading-breadcrumbs {
-  background: url('../img/texture-green.png') center center repeat;
-  padding: 20px 0;
+  padding: 20px ;
   margin-bottom: 40px;
 }
 #heading-breadcrumbs.no-mb {
   margin-bottom: 0;
 }
 #heading-breadcrumbs h1 {
+  width: fit-content;
+  border-bottom: solid 4px var(--primary-accent); 
+  padding: 5px 0;
   color: #333333;
   text-transform: uppercase;
   font-size: 30px;
@@ -3014,7 +3011,6 @@ fieldset[disabled] .btn-template-primary.active {
 .navbar-form {
   margin-left: -15px;
   margin-right: -15px;
-  padding: 10px 15px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -3064,8 +3060,8 @@ fieldset[disabled] .btn-template-primary.active {
   margin-bottom: 20px;
 }
 .navbar-text {
-  margin-top: 21px;
-  margin-bottom: 21px;
+  margin-top: 17px;
+  margin-bottom: 17px;
 }
 @media (min-width: 768px) {
   .navbar-text {
@@ -3467,7 +3463,7 @@ address {
 }
 .panel {
   margin-bottom: 20px;
-  background-color: #ffffff;
+  background-color: #fff;
   border: 1px solid transparent;
   border-radius: 0;
   -webkit-box-shadow: 0 0 0;
