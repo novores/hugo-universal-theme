@@ -17,26 +17,25 @@
         {{ partial "breadcrumbs.html" . }}
 
         <div id="content">
-          
             <div class="container">
-                    <!-- *** LEFT COLUMN *** -->
                 <div class="row">
+                    <!-- *** LEFT COLUMN *** -->
 
-                    <div class="col-md-9" id="blog-listing-medium" style="text-align:center">
+                    <div class="col-md-8" id="blog-listing-medium">
                         {{ $paginator := .Paginate .Data.Pages }}
                         {{ range $paginator.Pages }}
-                                <div class="product" onclick="location.href = '{{ .Permalink }}'">
-                                  <img src="https://cdn.jsdelivr.net/gh/novores/ldtqn-jabar/static/img/products/{{ .Params.img }}" alt="Gambar Produk">
-                                  <h3><strong>{{ .Title }}</strong></h3>
-                                  {{ if .Params.disc }}
-                                    <div class="harga">Rp.{{ .Params.disc }}</br><del style="font-size:11px">Rp.{{ .Params.price }}</del></div>
-                                  {{ else }}
-                                    <p class="harga">Rp.{{ .Params.price }}</p>
-                                  {{ end }}
-                                  <a href="{{ .Params.linkWA }}" class="btn-whatsapp">Beli via WhatsApp</a>
-                                  </div>
+                        <section class="post">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>{{ .Params.desc }}</p>
+                                </div>
+                            </div>
+                        </section>
                         {{ end }}
-                      
+
                         <ul class="pager">
                             {{ if .Paginator.HasPrev }}
                             <li class="previous"><a href="{{ .Paginator.Prev.URL | relURL }}">&larr; {{ i18n "newer" }}</a></li>
@@ -51,7 +50,13 @@
                             {{ end }}
                         </ul>
                     </div>
-                    
+                    <!-- /.col-md-9 -->
+
+                    <!-- *** LEFT COLUMN END *** -->
+
+                    <!-- *** RIGHT COLUMN ***
+       _________________________________________________________ -->
+
                     <div class="col-md-3">
 
                         <!-- *** MENUS AND WIDGETS *** -->
@@ -61,6 +66,11 @@
                         <!-- *** MENUS AND FILTERS END *** -->
 
                     </div>
+                    <!-- /.col-md-3 -->
+
+                    <!-- *** RIGHT COLUMN END *** -->
+
+                </div>
                 <!-- /.row -->
             </div>
             <!-- /.container -->
@@ -76,4 +86,3 @@
 
   </body>
 </html>
-

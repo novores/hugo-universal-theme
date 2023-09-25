@@ -1,7 +1,12 @@
 {{ partial "widgets/search.html" . }}
 
-{{ partial "widgets/categories.html" . }}
+{{ if (eq .Section "blog") }}
+  {{ partial "widgets/categories.html" . }}
 
-{{ partial "widgets/tags.html" . }}
+  {{ partial "widgets/tags.html" . }}
+{{ end }}
 
-{{ partial "widgets/labels.html" . }}
+{{ if (eq .Section "products") }}
+  {{ partial "widgets/labels.html" . }}
+{{ end }}
+
