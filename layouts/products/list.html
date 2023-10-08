@@ -26,7 +26,7 @@
                         {{ $paginator := .Paginate .Data.Pages }}
                         {{ range $paginator.Pages }}
                                 <div class="product" onclick="location.href = '{{ .Permalink }}'">
-                                  <img src="https://cdn.jsdelivr.net/gh/novores/ldtqn-jabar/static/img/products/{{ .Params.img }}" alt="Gambar Produk">
+                                  <img src="https://s6.imgcdn.dev/{{ .Params.img }}" alt="Gambar Produk">
                                   <h3><strong>{{ .Title }}</strong></h3>
                                   {{ if .Params.disc }}
                                     <div class="harga">Rp.{{ .Params.disc }}</br><del style="font-size:11px">Rp.{{ .Params.price }}</del></div>
