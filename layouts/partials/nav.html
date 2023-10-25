@@ -170,6 +170,9 @@
           </div>
         </form>
       </div>
+      {{ if or (.Params.cart) (.Params.price)  }}
+      <strong style="background: khaki;display: block;">tai</strong>
+      {{ end }}
       <!--/.nav-collapse -->
     </div>
   </div>
