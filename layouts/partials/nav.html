@@ -171,8 +171,12 @@
         </form>
       </div>
       {{ if or (.Params.cart) (.Params.price)  }}
-      <strong style="background: khaki;display: block;">tai</strong>
-      {{ end }}
+ <a href="#" class="snipcart-checkout" style="text-decoration: none;">
+      <div class="snipcart-summary">
+        <span>🛒</span>
+        <span class="snipcart-total-price"></span>
+      </div>
+    </a>      {{ end }}
       <!--/.nav-collapse -->
     </div>
   </div>
