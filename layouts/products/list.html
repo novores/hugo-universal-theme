@@ -1,79 +1,89 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
 
-  <head>
-    {{ partial "headers.html" . }}
-    {{ partial "custom_headers.html" . }}
-  </head>
+<head>
+  {{ partial "headers.html" . }}
+  {{ partial "custom_headers.html" . }}
+</head>
 
-  <body>
+<body>
 
-    <div id="all">
+  <div id="all">
 
-        {{ partial "top.html" . }}
+    {{ partial "top.html" . }}
 
-        {{ partial "nav.html" . }}
+    {{ partial "nav.html" . }}
 
-        {{ partial "breadcrumbs.html" . }}
+    {{ partial "breadcrumbs.html" . }}
 
-        <div id="content">
-          
-            <div class="container">
-                    <!-- *** LEFT COLUMN *** -->
-                <div class="row">
+    <div id="content">
 
-                    <div class="col-md-9" id="blog-listing-medium" style="text-align:center">
-                        {{ $paginator := .Paginate .Data.Pages }}
-                        {{ range $paginator.Pages }}
-                                <div class="product" onclick="location.href = '{{ .Permalink }}'">
-                                  <img src="https://s6.imgcdn.dev/{{ .Params.img }}" alt="Gambar Produk">
-                                  <h3><strong>{{ .Title }}</strong></h3>
-                                  {{ if .Params.disc }}
-                                    <div class="harga">Rp.{{ .Params.disc }}</br><del style="font-size:11px">Rp.{{ .Params.price }}</del></div>
-                                  {{ else }}
-                                    <p class="harga">Rp.{{ .Params.price }}</p>
-                                  {{ end }}
-                                  <a href="{{ .Params.linkWA }}" class="btn-whatsapp">Beli via WhatsApp</a>
-                                  </div>
-                        {{ end }}
-                      
-                        <ul class="pager">
-                            {{ if .Paginator.HasPrev }}
-                            <li class="previous"><a href="{{ .Paginator.Prev.URL | relURL }}">&larr; {{ i18n "newer" }}</a></li>
-                            {{ else }}
-                            <li class="previous disabled"><a href="#">&larr; {{ i18n "newer" }}</a></li>
-                            {{ end }}
+      <div class="container">
+        <!-- *** LEFT COLUMN *** -->
+        <div class="row">
 
-                            {{ if .Paginator.HasNext }}
-                            <li class="next"><a href="{{ .Paginator.Next.URL | relURL }}">{{ i18n "older" }} &rarr;</a></li>
-                            {{ else }}
-                            <li class="next disabled"><a href="#">{{ i18n "older" }} &rarr;</a></li>
-                            {{ end }}
-                        </ul>
-                    </div>
-                    
-                    <div class="col-md-3">
-
-                        <!-- *** MENUS AND WIDGETS *** -->
-
-                        {{ partial "sidebar.html" . }}
-
-                        <!-- *** MENUS AND FILTERS END *** -->
-
-                    </div>
-                <!-- /.row -->
+          <div class="col-md-9" id="blog-listing-medium" style="text-align:center">
+            {{ $paginator := .Paginate .Data.Pages }}
+            {{ range $paginator.Pages }}
+            <div class="product">
+              <img onclick="location.href = '{{ .Permalink }}'" src="https://s6.imgcdn.dev/{{ .Params.img }}" alt="Gambar Produk">
+              <h3 onclick="location.href = '{{ .Permalink }}'"><strong>{{ .Title }}</strong></h3>
+              {{ if .Params.disc }}
+              <div class="harga">Rp.{{ lang.FormatNumberCustom 0 .Params.disc "- , ." }}</br><del
+                  style="font-size:11px">Rp.{{ .Params.price }}</del>
+              </div>
+              {{ else }}
+              <p class="harga">Rp.{{ .Params.price }}</p>
+              {{ end }}
+              {{ if not .Site.Params.enableCart}}
+              <a href="{{ .Params.linkWA }}" class="btn-whatsapp">Beli via WhatsApp</a>
+              {{ else }}
+              <button class="snipcart-add-item buy-button" data-item-id="{{ .Params.id }}"
+                data-item-name="{{ .Params.name }}" data-item-price="{{ .Params.price }}"
+                data-item-url="{{ .Permalink }}" data-item-description="{{ .Params.desc }}">
+                Add to cart
+              </button>
+              {{ end }}
             </div>
-            <!-- /.container -->
-        </div>
-        <!-- /#content -->
+            {{ end }}
 
-        {{ partial "footer.html" . }}
+            <ul class="pager">
+              {{ if .Paginator.HasPrev }}
+              <li class="previous"><a href="{{ .Paginator.Prev.URL | relURL }}">&larr; {{ i18n "newer" }}</a></li>
+              {{ else }}
+              <li class="previous disabled"><a href="#">&larr; {{ i18n "newer" }}</a></li>
+              {{ end }}
+
+              {{ if .Paginator.HasNext }}
+              <li class="next"><a href="{{ .Paginator.Next.URL | relURL }}">{{ i18n "older" }} &rarr;</a></li>
+              {{ else }}
+              <li class="next disabled"><a href="#">{{ i18n "older" }} &rarr;</a></li>
+              {{ end }}
+            </ul>
+          </div>
+
+          <div class="col-md-3">
+
+            <!-- *** MENUS AND WIDGETS *** -->
+
+            {{ partial "sidebar.html" . }}
+
+            <!-- *** MENUS AND FILTERS END *** -->
+
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container -->
+      </div>
+      <!-- /#content -->
+
+      {{ partial "footer.html" . }}
 
     </div>
     <!-- /#all -->
 
     {{ partial "scripts.html" . }}
 
-  </body>
-</html>
+</body>
 
+</html>
