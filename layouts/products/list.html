@@ -29,9 +29,9 @@
             {{ range $paginator.Pages }}
             <div class="product" >
               <img onclick="location.href = '{{ .Permalink }}'" src="https://s6.imgcdn.dev/{{ .Params.img }}" alt="Gambar Produk">
-              <h3><strong>{{ .Params.name }}</strong></h3>
+              <h3 onclick="location.href = '{{ .Permalink }}'"><strong>{{ .Params.name }}</strong></h3>
               {{ if .Params.disc }}
-              <div class="harga">Rp.{{ .Params.disc }}</br><del style="font-size:11px">Rp.{{ .Params.price }}</del>
+              <div class="harga">Rp.{{ lang.FormatNumberCustom 0 .Params.price "- , ." }}</br><del style="font-size:11px">Rp.{{ lang.FormatNumberCustom 0 .Params.disc "- , ." }}</del>
               </div>
               {{ else }}
               <p class="harga">Rp.{{ .Params.price }}</p>
