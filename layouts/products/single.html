@@ -78,7 +78,7 @@
             </section>
             <!-- END SLIDE IMAGE -->
             <section>
-              <h1>{{ .Params.name }}</h1>
+              <h1>{{ .Title }}</h1>
             </section>
             <div class="w3-container w3-animate-top">
               {{ if .Params.disc }}
@@ -114,7 +114,7 @@
             <a class="btn btn-success" href="{{ .Params.linkWA }}" role="button">Pesan Via WhatsApp</a>
             {{ else }}
             <button class="snipcart-add-item buy-button" data-item-id="{{ .Params.id }}"
-              data-item-name="{{ .Params.name }}" data-item-price="{{ .Params.price }}" data-item-url="{{ .Permalink }}"
+              data-item-name="{{ .Title }}" data-item-price="{{ .Params.price }}" data-item-url="{{ .Permalink }}"
               data-item-description="{{ .Params.desc }}">
               Add to cart
             </button>

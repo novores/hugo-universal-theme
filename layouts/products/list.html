@@ -27,7 +27,7 @@
             {{ range $paginator.Pages }}
             <div class="product">
               <img onclick="location.href = '{{ .Permalink }}'" src="https://s6.imgcdn.dev/{{ .Params.img }}" alt="Gambar Produk">
-              <h3 onclick="location.href = '{{ .Permalink }}'"><strong>{{ .Params.name }}</strong></h3>
+              <h3 onclick="location.href = '{{ .Permalink }}'"><strong>{{ .Title }}</strong></h3>
               {{ if .Params.disc }}
               <div class="harga">Rp.{{ lang.FormatNumberCustom 0 .Params.price "- , ." }}</br><del
                   style="font-size:11px">Rp.{{ .Params.disc }}</del>
@@ -39,7 +39,7 @@
               <a href="{{ .Params.linkWA }}" class="btn-whatsapp">Beli via WhatsApp</a>
               {{ else }}
               <button class="snipcart-add-item buy-button" data-item-id="{{ .Params.id }}"
-                data-item-name="{{ .Params.name }}" data-item-price="{{ .Params.price }}"
+                data-item-name="{{ .Title }}" data-item-price="{{ .Params.price }}"
                 data-item-url="{{ .Permalink }}" data-item-description="{{ .Params.desc }}">
                 Add to cart
               </button>
