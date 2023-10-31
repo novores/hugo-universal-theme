@@ -77,22 +77,22 @@
               </div>
             </section>
             <!-- END SLIDE IMAGE -->
+            
             <section>
               <h1>{{ .Title }}</h1>
             </section>
             <div class="w3-container w3-animate-top">
               {{ if .Params.disc }}
               <span style="border:solid 1px #B8E891;padding:10px;border-radius:10px">
-                <span style="font-size: 20px;font-weight:400">Rp.{{ .Params.price }}</span>
-                <del style="font-size: 17px;font-weight:300">Rp.{{ .Params.disc }}</del>
+                <span style="font-size: 20px;font-weight:400">Rp.{{ lang.FormatNumberCustom 0 .Params.price "- , ." }}</span>
+                <del style="font-size: 17px;font-weight:300">Rp.{{ lang.FormatNumberCustom 0 .Params.disc "- , ." }}</del>
               </span>
               {{ else }}
-              <p style="font-size: 20px;">Rp. {{ .Params.disc }}</p>
+              <span style="font-size: 20px;">Rp.{{ lang.FormatNumberCustom 0 .Params.disc "- , ." }}</span>
               {{ end }}
+              <span class="stock" style="margin: 5pt;">tersedia {{ .Params.stock }}</span>
             </div>
             <br>
-            <br>
-
             <!-- BEGIN TAB -->
             <ul class="nav nav-tabs">
               <li class="active"><a data-toggle="tab" href="#spec">Detail Produk</a></li>
@@ -110,14 +110,18 @@
               </div>
             </div>
             <br>
-            {{ if not .Site.Params.enableCart}}
-            <a class="btn btn-success" href="{{ .Params.linkWA }}" role="button">Pesan Via WhatsApp</a>
+            {{ if ne .Params.stock 0 }}
+              {{ if not .Site.Params.enableCart}}
+                <a class="btn btn-success" href="{{ .Params.linkWA }}" role="button">Pesan Via WhatsApp</a>
+              {{ else }}
+                <button class="snipcart-add-item buy-button" data-item-id="{{ .Params.id }}"
+                  data-item-name="{{ .Title }}" data-item-price="{{ .Params.price }}" data-item-url="{{ .Permalink }}"
+                  data-item-description="{{ .Params.desc }}">
+                  Add to cart
+                </button>
+              {{ end }}
             {{ else }}
-            <button class="snipcart-add-item buy-button" data-item-id="{{ .Params.id }}"
-              data-item-name="{{ .Title }}" data-item-price="{{ .Params.price }}" data-item-url="{{ .Permalink }}"
-              data-item-description="{{ .Params.desc }}">
-              Add to cart
-            </button>
+              <div class="btn btn-success" style="margin-bottom: 20px;float:right;border: solid 1px gray; background: transparent; color: gray;">Stok Habis</div>
             {{ end }}
           </div>
         </div>
