@@ -58,7 +58,6 @@
                   </div>
                   {{ end }}
                   {{ if .Params.img2 }}
-
                   <div class="item">
                     <img src="https://s6.imgcdn.dev/{{ .Params.img2 }}" style="height:400px" alt="New York">
                   </div>
@@ -112,7 +111,7 @@
             <br>
             {{ if ne .Params.stock 0 }}
               {{ if not .Site.Params.enableCart}}
-                <a class="btn btn-success" href="{{ .Params.linkWA }}" role="button">Pesan Via WhatsApp</a>
+                <button class="btn"><a href="{{ .Params.linkWA }}" role="button">Pesan Via WhatsApp</a></button>
               {{ else }}
                 <button class="snipcart-add-item buy-button" data-item-id="{{ .Params.id }}"
                   data-item-name="{{ .Title }}" data-item-price="{{ .Params.price }}" data-item-url="{{ .Permalink }}"

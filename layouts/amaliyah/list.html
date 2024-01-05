@@ -26,10 +26,10 @@
                         {{ range $paginator.Pages }}
                         <section class="post">
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                     <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-auto justify-content-md-center">
                                     <p>{{ .Params.desc }}</p>
                                 </div>
                             </div>

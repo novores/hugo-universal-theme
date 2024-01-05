@@ -7,15 +7,13 @@
 
                 {{ .Content }}
 
-                {{ if isset .Site.Params "formspree_action" }}
+                {{ if isset .Site.Params "form_action" }}
 
-                <div class="heading">
-                  <h3>{{ i18n "contactForm" }}</h3>
-                </div>
+                <h3>{{ i18n "contactForm" }}</h3>
 
                 <div id="contact-message"></div>
 
-                <form {{ with .Site.Params.contact_form_ajax }}class="contact-form-ajax"{{ else }}{{ end }} method="post" action="{{ .Site.Params.formspree_action }}">
+                <form {{ with .Site.Params.contact_form_ajax }}class="contact-form-ajax"{{ else }}{{ end }} method="post" action="{{ .Site.Params.form_action }}">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
@@ -61,7 +59,7 @@
             {{ if isset .Site.Params "address" }}
             <section>
 
-              <h3 class="text-uppercase"> {{ i18n "contactAddrTitle" }}</h3>
+              <h3> {{ i18n "contactAddrTitle" }}</h3>
 
                 {{ .Site.Params.address | safeHTML }}
 
